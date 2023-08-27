@@ -16,8 +16,8 @@ public:
 	void minus() {
 		c--;
 	}
-	void print() {
-		std::cout << c<<std::endl;
+	int getc () {
+		return c;
 	}
 
 };
@@ -48,7 +48,7 @@ int main()
 				conc.minus();
 			}
 			if (com == '=') {
-				conc.print();
+				std::cout<<conc.getc()<<std::endl;
 			}
 			if (com == 'x') {
 				break;
@@ -68,7 +68,7 @@ int main()
 				conc.minus();
 			}
 			if (com == '=') {
-				conc.print();
+				std::cout << conc.getc()<<std::endl;
 			}
 			if (com == 'x') {
 				break;

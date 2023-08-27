@@ -1,9 +1,10 @@
 ﻿#include <iostream>
 
 class calculator {
-public:
+private:
 	double num1;
 	double num2;
+public:
 	double add() {
 		return num1 + num2;
 	}
@@ -46,28 +47,18 @@ int main()
 		std::cout<< "Введите num1: ";
 		std::cin>> numb;
 		calc.set_num1(numb);
-		while (calc.num1 != 0) {
-			if (calc.set_num1(numb) == false) {
+		while (calc.set_num1(numb) == false){
 				std::cout << "Неверный ввод! "<<std::endl;
 				std::cout << "Введите num1: ";
 				std::cin >> numb;
-			}
-			else {
-				break;
-			}
 		}
 		std::cout << "Введите num2: ";
 		std::cin >> numb;
 		calc.set_num2(numb);
-		while (calc.num1 != 0) {
-			if (calc.set_num2(numb) == false) {
+		while (calc.set_num2(numb) == false){
 				std::cout << "Неверный ввод! " << std::endl;
 				std::cout << "Введите num2: ";
 				std::cin >> numb;
-			}
-			else {
-				break;
-			}
 		};
 		std::cout << calc.add() << std::endl;
 		std::cout << calc.multiply() << std::endl;
