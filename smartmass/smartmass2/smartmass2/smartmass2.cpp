@@ -29,26 +29,48 @@ public:
         return arr[index_element];
     }
     smart_array& operator =(const smart_array& rhs) {
-        maxsize = rhs.maxsize;
-        index_size = rhs.index_size;
-        for (int i = 0; i < maxsize; ++i) {
-            arr[i] = rhs.arr[i];
+        if (this != &rhs) {
+            if (rhs.maxsize != maxsize)
+            {
+                delete[] arr;
+                arr = new int[rhs.maxsize];
+
+            }
+            maxsize = rhs.maxsize;
+            index_size = rhs.index_size;
+            for (int i = 0; i < maxsize; ++i) {
+                arr[i] = rhs.arr[i];
+            }
         }
         return *this;
+    }
+    smart_array(const smart_array& rhs) {
+        if (this != &rhs) {
+            arr = new int[rhs.maxsize];
+            maxsize = rhs.maxsize;
+            index_size = rhs.index_size;
+            for (int i = 0; i < maxsize; ++i) {
+                arr[i] = rhs.arr[i];
+            }
+        }
+        
     }
 };
 
 int main()
 {
     smart_array arr(5);
+    smart_array arr2(5);
     arr.add_element(1);
     arr.add_element(4);
     arr.add_element(155);
 
     smart_array new_array(2);
+    smart_array new_array2(2);
     new_array.add_element(44);
     new_array.add_element(34);
 
-    arr = new_array;
+    smart_array arr3(3);
+    smart_array arr4(arr3);
     return 0;
 }
