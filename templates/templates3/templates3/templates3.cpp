@@ -1,35 +1,46 @@
 ﻿#include <iostream>
 #include <vector>
-class get_sum {
+#include <algorithm>
+#include <list>
+class sum {
 public:
-    int operator()(const std::vector<int>& v) {
+    void operator()( const int& a) {
         int res=0;
-        for (int i = 0; i < v.size(); ++i) {
-            if (v[i] % 3 == 0) {
-                res+=v[i];
+            if (a % 3 == 0) {
+                summ += a;
             }
-        }
-        return res;
     }
+    int get_sum() {
+        return summ;
+    }
+private:
+    int summ = 0;
 };
-class get_count {
+class count {
 public:
-    int operator()(const std::vector<int>& v) {
-        int res = 0;
-        for (int i = 0; i < v.size();++i) {
-            if (v[i] %3 == 0) {
-                ++res;  
+    void operator()(const int & a) {
+            if (a%3 == 0) {
+                ++countt;
             }
-        }
-        return res;
     }
+    int get_count() {
+        return countt;
+    }
+private:
+    int countt = 0;
 };
 int main()
 {
     std::vector<int> v{ 4, 1, 3, 6, 25, 54 };
-    get_sum get_sum;
-    get_count get_count;
-    std::cout<<get_sum(v)<<" ";
-    std::cout << get_count(v);
+    std::list<int> l{ 1,2,3,4,5,6 };
+    sum x;
+    sum z;
+    count y;
+    x = std::for_each(v.begin(), v.end(), x);
+    y = std::for_each(v.begin(), v.end(), y);
+    z = std::for_each(l.begin(), l.end(), z);
+    
+    std::cout << "[OUT] : get_sum() = " << x.get_sum() << std::endl;
+    std::cout << "[OUT] : get_count() = " << y.get_count() << std::endl;
 }
 

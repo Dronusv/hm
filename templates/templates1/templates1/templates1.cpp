@@ -5,16 +5,17 @@
 
 
 template <class T>
-T qua(T& a ) {
+T qua(const T& a ) {
 	return a * a;
 }
 
 template<>
-std::vector<int> qua(std::vector<int>& v ) {
-	for (int i = 0; i < v.size(); ++i) {
-		v[i] = qua(v[i]);
+std::vector<int> qua(const std::vector<int>& v ) {
+	std::vector<int> res(v.size());
+	for (int i = 0; i < res.size(); ++i) {
+		res[i] = qua(v[i]);
 	}
-	return v;
+	return res;
 }
 
 int main()
@@ -23,7 +24,7 @@ int main()
 	double b = 3.4;
 	std::cout << qua(a) <<" " << qua(b)<<" ";
 	std::vector<int> v{1, 2, 3};
-	qua(v);
+	qua(v);	
 	for (auto c : v) {
 		std::cout << c<<' ';
 	}
