@@ -5,7 +5,31 @@
 #include <typeinfo>
 #include<exception>
 #include <variant>
+#include <cstdlib>
 class ini_parser {
+private:
+    std::map <std::string, std::map<std::string, std::string>> m;
+    auto get_v(std::string name) {
+        std::string sec;
+        std::string val;
+        int count = 0;
+        for (int i = 0; i < name.size(); ++i) {
+            if (count != 0) {
+                val.push_back(name[i]);
+            }
+            if (name[i] == '.') {
+                ++count;
+            }
+            if (count == 0) {
+                sec.push_back(name[i]);
+            }
+
+        }
+        if (m[sec][val] == "") {
+            throw std::exception("No value for this variable");
+        }
+        return m[sec][val];
+    }
 public:
     ini_parser(std::string filename) {
         std::ifstream file(filename);
@@ -65,59 +89,25 @@ public:
     }
     template<typename T> 
     T get_value(std::string name) {
-        std::string sec;
-        std::string val;
-        int count=0;
-        for (int i = 0; i < name.size(); ++i) {
-            if (count != 0) {
-                val.push_back(name[i]);
-            }
-            if (name[i] == '.') {
-                ++count;
-            }
-            if (count == 0) {
-                sec.push_back(name[i]);
-            }
-            
-        }
-        if (m[sec][val] == "") {
-            throw std::exception("No value for this variable");
-        }
-        return m[sec][val];
+        return get_v(name);
     }
     template<>
     int get_value(std::string name) {
-        std::string sec;
-        std::string val;
-        int count = 0;
-        for (int i = 0; i < name.size(); ++i) {
-            if (count != 0) {
-                val.push_back(name[i]);
-            }
-            if (name[i] == '.') {
-                ++count;
-            }
-            if (count == 0) {
-                sec.push_back(name[i]);
-            }
-
-        }
-        if (m[sec][val] == "") {
-            throw std::exception("No value for this variable");
-        }
-        return std::stoi(m[sec][val]);
+        return std::stoi(get_v(name));
+    }
+    template<>
+    double get_value(std::string name) {
+        return std::stod(get_v(name));
     }
     
-    // можно ли как-то объеденить эти две функции? Чтобы была написана только 1 фунция и для чисел и для строк а не 2.
-private:
-     std::map <std::string, std::map<std::string,std::string>> m;
 };
 int main()
 {
-    setlocale(LC_ALL, "Russian");  
+    
     try {
         ini_parser parser("filename.txt");
-        auto value = parser.get_value<std::string>("Section1.var1");
+        auto value = parser.get_value<std::string>("Section1.var3");
+        setlocale(LC_ALL, "Russian");
         std::cout << value;
     }
     catch (std::exception & ex) {
