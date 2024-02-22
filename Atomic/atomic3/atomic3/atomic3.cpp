@@ -18,8 +18,8 @@ public:
 };
 
 void swap_lock(data &lhs,data& rhs) {
-    lhs.m.lock();
-    rhs.m.lock();
+    std::lock(lhs.m, rhs.m);
+
     data temp;
     temp.age = lhs.age;
     temp.name = lhs.name;
@@ -27,9 +27,10 @@ void swap_lock(data &lhs,data& rhs) {
     lhs.name = rhs.name;
     rhs.age = temp.age;
     rhs.name = temp.name;
-
-    lhs.m.unlock();
+    
     rhs.m.unlock();
+    lhs.m.unlock();
+    
 }
 
 void swap_scoped_lock(data& lhs, data& rhs) {
@@ -44,8 +45,9 @@ void swap_scoped_lock(data& lhs, data& rhs) {
 }
 
 void swap_unique_lock(data& lhs, data& rhs) {
-    std::unique_lock<std::mutex> ul(lhs.m);
-    std::unique_lock<std::mutex> ul2(rhs.m);
+    std::unique_lock<std::mutex> ul(lhs.m,std::defer_lock);
+    std::unique_lock<std::mutex> ul2(rhs.m,std::defer_lock);
+    std::lock(ul, ul2);
     data temp;
     temp.age = lhs.age;
     temp.name = lhs.name;
@@ -53,6 +55,7 @@ void swap_unique_lock(data& lhs, data& rhs) {
     lhs.name = rhs.name;
     rhs.age = temp.age;
     rhs.name = temp.name;
+    
 }
 
 int main()
