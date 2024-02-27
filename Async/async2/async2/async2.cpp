@@ -16,17 +16,17 @@ int test(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
     
 }
 
-template<typename It,class F,size_t size = 5>
+template<typename It,class F>
 auto forEach(It begin, It end,F func) {
     size_t curr_size = std::distance(begin, end);
-    if (curr_size <= size) {
+    if (curr_size <= 1) {
         return func(begin,end);
     }
     auto mid = begin;
     std::advance(mid, curr_size/2); 
     auto fl_res=std::async(forEach<It,F>, begin, mid,func);
-    auto l_res= func(mid, end);
-    return fl_res.get() + l_res;
+    auto l_res= std::async(forEach<It, F>, mid, end, func);
+    return fl_res.get() + l_res.get();
    
 }
 
