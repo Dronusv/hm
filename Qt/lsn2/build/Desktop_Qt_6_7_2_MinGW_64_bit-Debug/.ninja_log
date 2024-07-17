@@ -1,0 +1,24 @@
+# ninja log v6
+5	503	7428320649106559	build.ninja	7ac6199b3257fa50
+4	433	7428316664398404	lsn2_autogen/timestamp	e48e1b6218c234f4
+4	433	7428316664398404	lsn2_autogen/mocs_compilation.cpp	e48e1b6218c234f4
+4	433	7428316664398404	C:/Users/PC/Desktop/hm/Qt/lsn2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/lsn2_autogen/timestamp	e48e1b6218c234f4
+4	433	7428316664398404	C:/Users/PC/Desktop/hm/Qt/lsn2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/lsn2_autogen/mocs_compilation.cpp	e48e1b6218c234f4
+437	1943	7428316664803470	CMakeFiles/lsn2.dir/lsn2_autogen/mocs_compilation.cpp.obj	c02699a954e005cb
+445	2020	7428316664883367	CMakeFiles/lsn2.dir/mainwindow.cpp.obj	79c4aef20d93d419
+5	532	7428320649106559	build.ninja	7ac6199b3257fa50
+9	430	7428320653302002	lsn2_autogen/timestamp	e48e1b6218c234f4
+9	430	7428320653302002	lsn2_autogen/mocs_compilation.cpp	e48e1b6218c234f4
+9	430	7428320653302002	C:/Users/PC/Desktop/hm/Qt/lsn2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/lsn2_autogen/timestamp	e48e1b6218c234f4
+9	430	7428320653302002	C:/Users/PC/Desktop/hm/Qt/lsn2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/lsn2_autogen/mocs_compilation.cpp	e48e1b6218c234f4
+431	1651	7428320653727954	CMakeFiles/lsn2.dir/lsn2_autogen/mocs_compilation.cpp.obj	228b546ec1d7a4de
+435	1682	7428320653727954	CMakeFiles/lsn2.dir/main.cpp.obj	5c50f5f0cb74284b
+439	1743	7428320653727954	CMakeFiles/lsn2.dir/mainwindow.cpp.obj	3b890995eea13380
+1743	1902	7428320666730558	lsn2.exe	ce935162de061791
+11	118	7428323941046636	lsn2_autogen/timestamp	e48e1b6218c234f4
+11	118	7428323941046636	lsn2_autogen/mocs_compilation.cpp	e48e1b6218c234f4
+11	118	7428323941046636	C:/Users/PC/Desktop/hm/Qt/lsn2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/lsn2_autogen/timestamp	e48e1b6218c234f4
+11	118	7428323941046636	C:/Users/PC/Desktop/hm/Qt/lsn2/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/lsn2_autogen/mocs_compilation.cpp	e48e1b6218c234f4
+118	1455	7428323942123539	CMakeFiles/lsn2.dir/main.cpp.obj	5c50f5f0cb74284b
+123	1470	7428323942174255	CMakeFiles/lsn2.dir/mainwindow.cpp.obj	3b890995eea13380
+1471	1620	7428323955643381	lsn2.exe	ce935162de061791
