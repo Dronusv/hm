@@ -22,10 +22,7 @@ private:
     int numb_circl=0;
     QTimer *timer;
 signals:
-    void sig_ClickStart(void);
-    void sig_ClickStop(void);
     void sig_ClickCircl(QString str);
-    void sig_ClickClear(void);
     void sig_sendTIMER(double t);
 public slots:
     void TIMER();

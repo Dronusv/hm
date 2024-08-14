@@ -2,12 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "stopwatch.h"
+#include <QTimer>
+#include "udpworker.h"
+
+#define TIMER_DELAY 1000
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -18,20 +19,21 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-public slots:
-   void lb_txt(double t);
-   void Circl(QString str);
-
 private slots:
-
     void on_pb_start_clicked();
+    void DisplayTime(QDateTime data);
+    void DisplayData(QHostAddress Qha,int size);
+    void on_pb_stop_clicked();
 
-    void on_pb_clear_clicked();
-
-    void on_pb_circle_clicked();
+    void on_pb_sendData_clicked();
 
 private:
     Ui::MainWindow *ui;
-    stopwatch *sWatch;
+    QTimer* timer;
+    UDPworker* udpWorker;
+    uint32_t counterPck = 0;
+
+
+
 };
 #endif // MAINWINDOW_H

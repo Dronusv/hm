@@ -2,12 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "stopwatch.h"
+#include <QDebug>
+#include <QtConcurrent>
+#include "ExampleRace.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -17,21 +17,42 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void StartRace( void );
+    void TestRace();
 
-public slots:
-   void lb_txt(double t);
-   void Circl(QString str);
 
 private slots:
 
     void on_pb_start_clicked();
 
-    void on_pb_clear_clicked();
-
-    void on_pb_circle_clicked();
-
 private:
     Ui::MainWindow *ui;
-    stopwatch *sWatch;
+    uint32_t number = 0, countFinish = 0;
+
+    QMutex m;
+    Controller *race1;
+    Controller *race2;
+
+    ExampleRace *concurRace1;
+    ExampleRace *concurRace2;
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif // MAINWINDOW_H

@@ -12,11 +12,9 @@ stopwatch::~stopwatch()
 }
 void stopwatch::ClickStart(){
     timer->start(100);
-     emit sig_ClickStart( );
 }
 void stopwatch::ClickStop(){
     timer->stop();
-    emit sig_ClickStop( );
 }
 void stopwatch::ClickCircl(){
     numb_circl++;
@@ -28,7 +26,6 @@ void stopwatch::ClickClear(){
     numb_circl=0;
     time_circl=0;
     time_=0;
-    emit sig_ClickClear();
 }
 
 void stopwatch::TIMER(){

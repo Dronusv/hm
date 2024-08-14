@@ -2,12 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "stopwatch.h"
+#include "qcustomplot.h"
+#include "graphic.h"
+
+#define NUM_GRAPH 2
 
 QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
+namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -18,20 +19,16 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-public slots:
-   void lb_txt(double t);
-   void Circl(QString str);
-
 private slots:
-
-    void on_pb_start_clicked();
-
     void on_pb_clear_clicked();
-
-    void on_pb_circle_clicked();
+    void on_pb_updGraph_clicked();
 
 private:
     Ui::MainWindow *ui;
-    stopwatch *sWatch;
+    QCPGraph* graphic;
+    Graphic* graphClass;
+
+    QVector<double> ConstructMouse(int numForm, QVector<double> x);
+
 };
 #endif // MAINWINDOW_H
